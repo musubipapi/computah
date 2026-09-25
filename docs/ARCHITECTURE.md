@@ -87,6 +87,8 @@ All text input still requires verification of the requested outcome.
 
 ### Prepare model choices
 
+[What Computah sends to Jev](JEV_REQUESTS.md) documents the payload fields and shows example request and response JSON.
+
 Independent model questions have named keys.
 Questions can share a request when they use the same data.
 Large option lists are split into groups.

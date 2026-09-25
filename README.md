@@ -82,6 +82,9 @@ Code checks the returned action IDs, source text positions, values, and limits.
 App names and command words do not select special code paths.
 Prompt instructions are stored separately from the execution code.
 
+See [What Computah sends to Jev](docs/JEV_REQUESTS.md) for request fields,
+example JSON, control choices, and result checks.
+
 ### 4. Send checked input
 
 Before input, Computah checks that the command still has permission to act.
