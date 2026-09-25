@@ -1,0 +1,17 @@
+name: Build checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Public tree hygiene
+        run: python3 scripts/check-public-tree.py
+      - name: Build developer bundle
+        run: zsh scripts/build.sh
+      - name: Check end-to-end runner syntax
+        run: python3 -m py_compile Tests/end_to_end.py

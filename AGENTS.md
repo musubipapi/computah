@@ -1,30 +1,39 @@
 # Development guidance
 
-This is the canonical repository for the fast-mac-computer-use MVP. The earlier prototype was developed in a temporary Codex task folder; make future changes here.
+Computah is one Swift package at the repository root.
+`Sources/Computah` contains the app.
+`Sources/ComputahCore` owns native capabilities and command execution.
 
-## Scope
-
-- Native Swift/AppKit macOS app. Keep one process and no backend unless a measured requirement justifies one.
-- MVP target apps: Notes, Arc, and Photo Booth. Start execution with a complete Notes interaction.
-- Speech transcription uses Deepgram Flux. TypeSafe Jev integration and Mac execution are the next components.
-- Use the installed `.agents/skills/typesafe-ai/SKILL.md` for TypeSafe work and verify current API contracts against the live docs.
-
-## Code development philosophy
-
-Apply the grug-brained-development skill when writing, changing, debugging, reviewing, or designing code and APIs; planning implementation or testing; or refactoring and optimizing. Do not apply it merely for research, file operations, or product discussion.
-
-- Prefer the smallest working design and an 80/20 vertical slice.
-- Avoid speculative abstractions, services, frameworks, and dependencies.
-- Let stable cut points emerge before factoring.
-- Prefer understandable duplication over the wrong abstraction.
-- Use integration tests around real boundaries.
-- Refactor incrementally and optimize only from measurements.
-- Treat complexity as a cost that must justify itself.
-
-## Verification and data
-
-- Run `zsh build.sh` after code changes; it compiles, signs, and runs the offline self-tests.
-- Test provider behavior live only when needed and accurately distinguish it from offline validation.
-- Never print, commit, or export API keys. Credentials use the existing app-owned Keychain service.
-- Do not commit recordings, transcripts, app bundles, or local configuration.
-- Mark app state unknown when unobserved; never infer that an action succeeded merely because it was dispatched.
+- Preserve observed source text ranges, native object binding, cancellation, and prevention of repeated uncertain input.
+  Native object binding ties an action to the control that was observed.
+  A sent action is not evidence of success. Unobserved state is unknown.
+- Never decide intent or command boundaries with phrase lists, regular expressions that match verbs, or routing specific to an app.
+  Jev interprets language in context.
+  Code validates typed decisions, metadata, source ranges, limits, execution, and observed effects.
+- Do not key production behavior to a target app's name, bundle ID, website, or private selectors.
+  Test fixtures may name apps.
+  AXPress and simulated clicks are allowed when current native capabilities support them.
+- Apply the [generalization standard](docs/GENERALIZATION_STANDARD.md) to behavioral fixes and audits, including prompts.
+  State the cause of failure and the invariant.
+  Check the original failure, an unrelated case, and a counterexample before you claim that a fix applies more broadly.
+  Passing one requested command is not sufficient.
+- Keep UI and speech out of the core.
+  Keep prompt meanings in resources where practical.
+  Do not shorten or change them as a cosmetic refactor.
+- Run `zsh scripts/build.sh` for an offline build and a signed developer bundle.
+  The end-to-end tests are in `Tests/end_to_end.py`.
+  Run them with `--live` only after explicit permission and confirmation of an available Mac.
+  Live app/API diagnostics require explicit permission and an available Mac.
+  Do not run them as part of cleanup, CI, or routine tests.
+- Keep credentials only in ignored `.env` at the repository root, with mode `0600`.
+  Never print or commit keys, captures, recordings, transcripts, bundles, or personal app content.
+- Save detailed diagnostics only with explicit permission.
+  Use `PrivateFile` for private writes.
+  Redaction does not make ordinary app content safe to publish.
+- Keep plans and review notes under ignored `docs/local/`.
+  Public `docs/` files explain how to use and change the current app.
+  Use short sentences and plain words.
+- Preserve ignored local evidence under `outputs/`.
+  Do not publish app captures, recordings, source archives, or local reference downloads.
+- Read [architecture](docs/ARCHITECTURE.md) and [testing](docs/TESTING.md) before you change boundaries.
+  Update docs and scripts when paths or interfaces change.

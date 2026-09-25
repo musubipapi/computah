@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="228" viewBox="0 0 960 228" role="img" aria-labelledby="title desc">
+  <title id="title">How Computah works</title>
+  <desc id="desc">Start here: turn listening on and speak a command. Computah reads app controls and uses TypeSafe Jev to choose an action. It sends native input and checks the result. It continues only when more work is needed and the observed result allows it.</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10" fill="#577368"/></marker></defs>
+  <rect width="960" height="228" rx="18" fill="#f4f7f5"/>
+  <g fill="#fff" stroke="#d6e2db"><rect x="20" y="30" width="208" height="126" rx="12"/><rect x="258" y="30" width="208" height="126" rx="12"/><rect x="496" y="30" width="208" height="126" rx="12"/><rect x="734" y="30" width="206" height="126" rx="12"/></g>
+  <g stroke="#577368" stroke-width="2" marker-end="url(#arrow)"><path d="M233 93h18"/><path d="M471 93h18"/><path d="M709 93h18"/></g>
+  <g font-family="-apple-system, BlinkMacSystemFont, sans-serif">
+    <g font-size="13" font-weight="700" fill="#277253"><text x="36" y="56">01 / START HERE</text><text x="274" y="56">02 / APP CONTROLS</text><text x="512" y="56">03 / ACTION</text><text x="750" y="56">04 / RESULT</text></g>
+    <g font-size="21" font-weight="600" fill="#162c23"><text x="36" y="91">Speak a command</text><text x="274" y="91">Read the app</text><text x="512" y="91">Choose and act</text><text x="750" y="91">Check the result</text></g>
+    <g font-size="14" fill="#53645b"><text x="36" y="120">Deepgram turns speech</text><text x="36" y="139">into text.</text><text x="274" y="120">macOS gives Computah</text><text x="274" y="139">the available controls.</text><text x="512" y="120">TypeSafe Jev chooses.</text><text x="512" y="139">Computah sends input.</text><text x="750" y="120">Read the app again.</text><text x="750" y="139">Native checks and Jev.</text></g>
+    <text x="480" y="197" font-size="15" fill="#53645b" text-anchor="middle">Continue from observed progress. Never repeat an action to check its result.</text>
+  </g>
+</svg>

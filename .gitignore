@@ -1,11 +1,33 @@
 .DS_Store
+
+# Local evidence and downloaded research tools.
 /outputs/
 /work/
-/.build/
-/DerivedData/
+
+# Private plans and repository review notes.
+/docs/local/
+
+# Generated Swift, Xcode, and Python files (including nested packages).
+.build/
+.swiftpm/
+DerivedData/
+*.app/
+__pycache__/
+*.py[cod]
+*.xcuserstate
+xcuserdata/
+
+# Credentials and local logs.
 .env
 .env.*
 !.env.example
 *.log
-*.xcuserstate
-xcuserdata/
+
+# Historical/local reference collections are not part of the public application.
+/v0/
+/references/
+/Development/
+
+# Local agent configuration.
+/.agents/
+/.codex/
